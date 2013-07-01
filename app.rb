@@ -18,7 +18,12 @@ end
 
 post '/' do
   # TODO: Read the message contents, save to the database
-
+  # puts params[:key]
+  @sender = params[:sender]
+  @receiver = params[:receiver]
+  @message = params[:message]
+  Message.create(:sender => @sender, :receiver => @receiver, :content => @message)
+  erb :messages
 end
 
 class Message < ActiveRecord::Base
